@@ -1,0 +1,23 @@
+@use 'palette';
+
+.area_cell {
+  width: 100%;
+  height: 100%;
+  background: palette.$empty_color;
+}
+
+.cell_barrier {
+  background: palette.$barrier_color;
+}
+
+.cell_start {
+  background: palette.$start_color;
+}
+
+.cell_finish {
+  background: palette.$finish_color;
+}
+
+.cell_path {
+  background: palette.$path_color;
+}

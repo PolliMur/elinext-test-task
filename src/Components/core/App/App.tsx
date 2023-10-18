@@ -1,7 +1,12 @@
-import './App.module.scss';
+import { Area } from 'Components/Area';
+import { Container } from 'Components/layout/Container';
 
 const App = () => {
-  return <div>Path Finder</div>;
+  return (
+    <Container>
+      <Area />
+    </Container>
+  );
 };
 
 export default App;
