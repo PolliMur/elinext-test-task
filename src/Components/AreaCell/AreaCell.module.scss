@@ -4,6 +4,10 @@
   width: 100%;
   height: 100%;
   background: palette.$empty_color;
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .cell_barrier {
