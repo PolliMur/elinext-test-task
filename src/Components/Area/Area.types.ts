@@ -5,3 +5,7 @@ export type MarkedCell = {
   position: Position;
   type: CellVariant;
 };
+
+export type AreaProps = {
+  openInfoDialog: () => void;
+};

@@ -9,12 +9,13 @@ import { getCellByVariant } from 'helpers/getCellByVariant';
 import { AREA_SIZE } from 'constants/Area';
 import { CellVariant } from 'constants/CellVariant';
 import { Position } from 'interfaces/Position';
-import { MarkedCell } from './Area.types';
+import { ReactComponent as InfoIcon } from 'assets/icons/info.svg';
+import { AreaProps, MarkedCell } from './Area.types';
 import classes from './Area.module.scss';
 
 const cells: number[] = Array.from({ length: AREA_SIZE * AREA_SIZE });
 
-export const Area = () => {
+export const Area = ({ openInfoDialog }: AreaProps) => {
   const [markedCells, setMarkedCells] = useState<MarkedCell[]>([]);
 
   const markCell = useCallback((position: Position, type: CellVariant) => {
@@ -102,6 +103,9 @@ export const Area = () => {
       <div className={classes.buttons}>
         <BaseButton onClick={handleFindPath}>Find Path</BaseButton>
         <BaseButton onClick={handleClear}>Clear</BaseButton>
+        <BaseButton onClick={openInfoDialog}>
+          <InfoIcon />
+        </BaseButton>
       </div>
     </div>
   );

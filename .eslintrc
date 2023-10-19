@@ -27,6 +27,8 @@
       {
         "assertionStyle": "never"
       }
-    ]
+    ],
+    "@typescript-eslint/no-confusing-void-expression": "off",
+    "react/no-unescaped-entities": ["error", { "forbid": [">", "}"] }]
   }
 }
