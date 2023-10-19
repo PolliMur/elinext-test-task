@@ -48,7 +48,11 @@ export const Area = () => {
       return;
     }
 
+    const startTime = Date.now();
     const path = calcPath(getBarrierMatrix(markedCells), start.position, finish.position);
+    const endTime = Date.now();
+
+    toast.info(`Time spent: ${endTime - startTime} ms`);
 
     if (!path) {
       toast.info('No path found!');
