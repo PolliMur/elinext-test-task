@@ -19,14 +19,13 @@ export const Area = () => {
 
   const markCell = useCallback((position: Position, type: CellVariant) => {
     setMarkedCells((prevCells) => {
-      let cells = prevCells;
-
-      if (type === CellVariant.Start || type === CellVariant.Finish) {
-        cells = cells.filter((cell) => cell.type !== type);
-      }
-
       return [
-        ...cells.filter((cell) => !isEqualPositions(cell.position, position)),
+        ...prevCells.filter(
+          (cell) =>
+            !isEqualPositions(cell.position, position) &&
+            cell.type !== CellVariant.Path &&
+            (type === CellVariant.Start || type === CellVariant.Finish ? cell.type !== type : true)
+        ),
         { position, type },
       ];
     });
@@ -34,7 +33,9 @@ export const Area = () => {
 
   const unmarkCell = useCallback((position: Position) => {
     setMarkedCells((prevCells) => {
-      return prevCells.filter((cell) => !isEqualPositions(cell.position, position));
+      return prevCells.filter(
+        (cell) => !isEqualPositions(cell.position, position) && cell.type !== CellVariant.Path
+      );
     });
   }, []);
 

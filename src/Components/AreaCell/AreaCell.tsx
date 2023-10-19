@@ -42,6 +42,7 @@ const AreaCell = ({ x, y, variant = CellVariant.Empty, markCell, unmarkCell }: A
       className={clsx(classes.area_cell, classes[`cell_${variant}`])}
       onClick={handleClick}
       onContextMenu={handleContextMenu}
+      disabled={variant === CellVariant.Path}
     >
       {variant !== CellVariant.Empty && variant.slice(0, 1)}
     </button>
