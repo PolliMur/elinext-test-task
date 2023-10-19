@@ -14,6 +14,7 @@ const cellActions: MenuItem[] = [
 
 const AreaCell = ({ x, y, variant = CellVariant.Empty, markCell, unmarkCell }: AreaCellProps) => {
   const { openContextMenu } = useContextMenu();
+  const position = { x, y };
 
   const handleContextMenu = (event: MouseEvent) => {
     event.preventDefault();
@@ -22,13 +23,18 @@ const AreaCell = ({ x, y, variant = CellVariant.Empty, markCell, unmarkCell }: A
       offset: { x: event.clientX, y: event.clientY },
       options: cellActions,
       onSelect(optionId) {
-        markCell({ x, y }, optionId as CellVariant);
+        markCell(position, optionId as CellVariant);
       },
     });
   };
 
   const handleClick = () => {
-    unmarkCell({ x, y });
+    if (variant === CellVariant.Empty) {
+      markCell(position, CellVariant.Barrier);
+      return;
+    }
+
+    unmarkCell(position);
   };
 
   return (
